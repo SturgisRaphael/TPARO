@@ -1,0 +1,14 @@
+var A >= 0;
+var B >= 0;
+var C >= 0;
+var D >= 0;
+var E >= 0;
+maximize obj: 0.1 * A + 0.04 * B + 0.07 * C + 0.06 * D + 0.08 * E;
+s.t. c1: B + E >= 50000;
+s.t. c2: A + E <= 50000;
+s.t. c3: B + D >= 40000;
+s.t. c4: 0.04 * B + 0.06 * D >= 0.3 * (0.1 * A + 0.04 * B + 0.07 * C + 0.06 * D + 0.08 * E);
+s.t. c5: A + B + C + D + E = 100000;
+solve;
+display A, B, C, D, E;
+end;
