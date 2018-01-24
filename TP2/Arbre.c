@@ -33,8 +33,10 @@ int max(int a, int b)
 
 void knapsack(int ** array, int capacity, int length, tree t)
 {
+	
 	int index = t->index;
-
+	
+	
 	if(index >= length)
 	{
 		if(t->cumulatedValue > t->optimalValue)
@@ -43,7 +45,8 @@ void knapsack(int ** array, int capacity, int length, tree t)
 		}
 		return;
 	}
-
+	
+	
 	if(glouton(array, index, length, capacity + t->cumulatedWeight, t->cumulatedWeight, t->cumulatedValue) < t->optimalValue){
 		t->optimalValue = 0;
 		return;
@@ -77,8 +80,9 @@ void knapsack(int ** array, int capacity, int length, tree t)
 	t->right->cumulatedWeight = t->cumulatedWeight + array[index][0];
 	t->right->index = index + 1;
 	t->right->parent = t;
-	t->left->optimalValue = t->optimalValue;
+	t->right->optimalValue = t->optimalValue;
 	
+
 	knapsack(array, capacity - array[index][0], length, t->right);
 	
 	t->optimalValue = maxOptiValue(t->left, t->right);//TODO: maxOptiValue
