@@ -2,9 +2,9 @@ CC = gcc
 
 CFLAGS = -Wall -ggdb -std=c99 -lssl -lcrypto
 
-DEPS = Glouton.h
+DEPS = Glouton.h Arbre.h
 
-OBJ = Glouton.o main.o
+OBJ = Glouton.o main.o Arbre.o
 
 %.o : %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)

@@ -10,7 +10,7 @@ int main(int argc, char* argv[]){
 	}
 	
 	FILE* file = fopen(argv[1],"r");
-	int maxWeight;
+	int maxWeight = 0;
 	fscanf(file,"%d",&maxWeight);
 	
 	int index = 0;
@@ -33,9 +33,25 @@ int main(int argc, char* argv[]){
 	
 	}
 	
+	//printf("Glouton 15-15:\t%d\nGlouton 14-15\t%d\nGlouton 0-15\t%d\n", glouton(sortedArray, 15, 15, 1000, 0, 0), glouton(sortedArray, 14, 15, 1000, 0, 0), glouton(sortedArray, 0, 15, 1000, 0, 0));
+	
+	tree t = initTree();
+	t->index = 0;
+	t->cumulatedWeight = 0;
+	t->cumulatedValue = 0;
+	t->optimalValue = 0;
+	knapsack(sortedArray, maxWeight, index, t);
+	
+	
+	printf("Knapsack optimalValue = %d\n", t->optimalValue);
+	
 	for(int i =0;i<index;i++){
 		free(sortedArray[i]);
 	}
+	
+	freeTree(t);
+	
+	
 	free(sortedArray);
 	
 	fclose(file);

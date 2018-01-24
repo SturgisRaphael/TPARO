@@ -44,3 +44,35 @@ int ** copyArray(int array[10000][2], int length){
 	
 	return arrayCopy;
 }
+
+int glouton(int ** array, int begin,int length, int weightLimit,int weightOffset, int valueOffset)
+{
+	int capacity = weightLimit - weightOffset;
+	int value = valueOffset;
+	
+	if(weightOffset > weightLimit)
+	{
+		printf("Error: weightOffset > weightLimit\n");
+		exit(1);
+	}
+	
+	if(begin > length)
+	{
+		printf("Error: begin > length\n");
+		exit(1);
+	}
+	
+	for(int i = begin; i < length; i++)
+	{
+		if(array[i][0] > capacity)
+		{
+			value += (array[i][1] * capacity) / array[i][0];
+			break;
+		}
+		
+		value += array[i][1];
+		capacity -= array[i][0];
+	}
+	
+	return value;
+}
