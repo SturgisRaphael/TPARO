@@ -18,18 +18,26 @@ int ** copyArray(int array[10000][2], int length){
 	int ** arrayCopy;
 	arrayCopy = malloc(length*sizeof*arrayCopy);
 	for(int i=0;i<length;i++){
+		
 		arrayCopy[i]=malloc(2*sizeof(int));
 		arrayCopy[i][0]=array[i][0];
 		arrayCopy[i][1]=array[i][1];
 		
-		for(int j = i; j > 0; j--)
-		{
-			double currentRatio = (1.0 *arrayCopy[j][1])/arrayCopy[j][0] ;
-			double previousRatio = (1.0 * arrayCopy[j-1][1])/arrayCopy[j-1][0] ;
+		if(i>0){
+		
+			double currentRatio = (1.0 *arrayCopy[i][1])/arrayCopy[i][0] ;
+			double previousRatio = (1.0 * arrayCopy[i-1][1])/arrayCopy[i-1][0] ;
+			int j = i;
 			
-			printf("ratio = %f\n", currentRatio);
-			if(currentRatio < previousRatio)
-				swap(arrayCopy,i,j);
+			while(currentRatio < previousRatio && j > 0){
+				swap(arrayCopy,j,j-1);
+				j--;
+				
+				if(j>0){
+					currentRatio = (1.0 *arrayCopy[j][1])/arrayCopy[j][0] ;
+					previousRatio = (1.0 * arrayCopy[j-1][1])/arrayCopy[j-1][0] ;
+				}
+			}	
 		}
 		
 	}
