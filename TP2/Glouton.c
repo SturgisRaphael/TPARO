@@ -29,7 +29,7 @@ int ** copyArray(int array[10000][2], int length){
 			double previousRatio = (1.0 * arrayCopy[i-1][1])/arrayCopy[i-1][0] ;
 			int j = i;
 			
-			while(currentRatio < previousRatio && j > 0){
+			while(currentRatio > previousRatio && j > 0){
 				swap(arrayCopy,j,j-1);
 				j--;
 				
