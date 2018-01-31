@@ -3,6 +3,8 @@
 #include "Arbre.h"
 #include "Glouton.h"
 
+int count = 0; 
+
 int main(int argc, char* argv[]){
 	if(argc!=2){
 		printf("Pas le bon nombre d'arguments\n");
@@ -44,6 +46,7 @@ int main(int argc, char* argv[]){
 	
 	
 	printf("Knapsack optimalValue = %d\n", t->optimalValue);
+	printf("Explored %d\n", count);
 	
 	for(int i =0;i<index;i++){
 		free(sortedArray[i]);

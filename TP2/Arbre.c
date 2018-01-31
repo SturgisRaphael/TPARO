@@ -1,5 +1,7 @@
 #include "Arbre.h"
 
+extern int count;
+
 tree initTree()
 {
 	tree t = malloc(sizeof(node));
@@ -33,59 +35,46 @@ int max(int a, int b)
 
 void knapsack(int ** array, int capacity, int length, tree t)
 {
-	
+	count++;
 	int index = t->index;
 	
 	
 	if(index >= length)
 	{
 		if(t->cumulatedValue > t->optimalValue)
-		{
 			t->optimalValue = t->cumulatedValue;
-		}
+		else
+			t->optimalValue = -1;
 		return;
 	}
-	
 	
 	if(glouton(array, index, length, capacity + t->cumulatedWeight, t->cumulatedWeight, t->cumulatedValue) < t->optimalValue){
-		t->optimalValue = 0;
+		t->optimalValue = -1;
 		return;
 	}
 
-	if(array[index][0] > capacity)
+	if(array[index][0] <= capacity)
 	{
-		t->left = initTree();
-		t->left->cumulatedValue = t->cumulatedValue;
-		t->left->cumulatedWeight = t->cumulatedWeight;
-		t->left->index = index + 1;
-		t->left->parent = t;
-		t->left->optimalValue = 0;
-		knapsack(array, capacity, length, t->left);
-		t->optimalValue = t->left->optimalValue;
-		return;
+		//printf("right\n");
+		t->right = initTree();
+		t->right->cumulatedValue = t->cumulatedValue + array[index][1];
+		t->right->cumulatedWeight = t->cumulatedWeight + array[index][0];
+		t->right->index = index + 1;
+		t->right->parent = t;
+		t->right->optimalValue = t->optimalValue;
+		knapsack(array, capacity - array[index][0], length, t->right);
+		t->optimalValue = maxOptiValue(t->left, t->right);
 	}
-
+	//printf("left\n");
 	t->left = initTree();
 	t->left->cumulatedValue = t->cumulatedValue;
 	t->left->cumulatedWeight = t->cumulatedWeight;
 	t->left->index = index + 1;
 	t->left->parent = t;
-	t->left->optimalValue = 0;
-	
+	t->left->optimalValue = t->optimalValue;
 	knapsack(array, capacity, length, t->left);
-	t->optimalValue = t->left->optimalValue;
 	
-	t->right = initTree();
-	t->right->cumulatedValue = t->cumulatedValue + array[index][1];
-	t->right->cumulatedWeight = t->cumulatedWeight + array[index][0];
-	t->right->index = index + 1;
-	t->right->parent = t;
-	t->right->optimalValue = t->optimalValue;
-	
-
-	knapsack(array, capacity - array[index][0], length, t->right);
-	
-	t->optimalValue = maxOptiValue(t->left, t->right);//TODO: maxOptiValue
+	t->optimalValue = maxOptiValue(t->left, t->right);
 }
 
 void freeTree(tree t)
