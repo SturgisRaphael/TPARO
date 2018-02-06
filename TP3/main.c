@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "DecoupeOpti.h"
+#include "order.h"
 
 int main(int argc, char* argv[])
 {
@@ -20,10 +20,10 @@ int main(int argc, char* argv[])
 		typeNumber++;
 	}
 
-    Decoupe *Instance = malloc(sizeof*Instance);
-    initDecoupe(Instance, initWidth, typeNumber, array);
-    printDecoupe(Instance);
-    freeDecoupe(Instance);
+    order *Instance = malloc(sizeof*Instance);
+    initOrder(Instance, initWidth, typeNumber, array);
+    printOrder(Instance);
+    freeOrder(Instance);
 
     fclose(file);
 }

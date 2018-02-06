@@ -1,10 +1,10 @@
 CC = gcc
 
-CFLAGS = -Wall -ggdb -std=c99 -lssl -lcrypto
+CFLAGS = -Wall -ggdb -std=c99 -lssl -lcrypto -lglpk
 
-DEPS = DecoupeOpti.h
+DEPS = order.h orderSolver.h
 
-OBJ = DecoupeOpti.o main.o 
+OBJ = order.o main.o orderSolver.o
 
 %.o : %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
