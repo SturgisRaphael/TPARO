@@ -84,9 +84,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/raphael/git/TPARO/TP3/Makefile">
-			<Option target="TP3"/>
-		</Unit>
 		<Unit filename="/home/raphael/git/TPARO/TP3/main.c">
 			<Option target="TP3"/>
 		</Unit>
