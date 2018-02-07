@@ -200,6 +200,12 @@ TP3_BINARY_DIR:STATIC=/home/raphael/git/TPARO/TP3/cmake-build-debug
 //Value Computed by CMake
 TP3_SOURCE_DIR:STATIC=/home/raphael/git/TPARO/TP3
 
+//Dependencies for target
+lgbk_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+lglbk_LIB_DEPENDS:STATIC=
+
 
 ########################
 # INTERNAL cache entries

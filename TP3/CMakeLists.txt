@@ -14,5 +14,4 @@ ADD_DEFINITIONS(
         -Wall
         -Wextra
         -lglpk
-
 )

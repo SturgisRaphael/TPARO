@@ -1,6 +1,6 @@
 CC = gcc
 
-CFLAGS = -Wall -ggdb -std=c99 -lssl -lcrypto -lglpk
+CFLAGS = -Wall -ggdb -std=c99 -lglpk
 
 DEPS = order.h orderSolver.h
 

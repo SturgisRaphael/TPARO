@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/raphael/git/TPARO/TP3/main.c
+stdio.h
+-
+stdlib.h
+-
+order.h
+/home/raphael/git/TPARO/TP3/order.h
+
+/home/raphael/git/TPARO/TP3/order.c
+order.h
+/home/raphael/git/TPARO/TP3/order.h
+
+/home/raphael/git/TPARO/TP3/order.h
+stdio.h
+-
+stdlib.h
+-
+
+/home/raphael/git/TPARO/TP3/orderSolver.c
+orderSolver.h
+/home/raphael/git/TPARO/TP3/orderSolver.h
+
+/home/raphael/git/TPARO/TP3/orderSolver.h
+order.h
+/home/raphael/git/TPARO/TP3/order.h
+glpk.h
+-
+stdio.h
+-
+stdlib.h
+-
+stdbool.h
+-
+
