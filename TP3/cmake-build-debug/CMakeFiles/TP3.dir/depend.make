@@ -3,6 +3,7 @@
 
 CMakeFiles/TP3.dir/main.c.o: ../main.c
 CMakeFiles/TP3.dir/main.c.o: ../order.h
+CMakeFiles/TP3.dir/main.c.o: ../orderSolver.h
 
 CMakeFiles/TP3.dir/order.c.o: ../order.c
 CMakeFiles/TP3.dir/order.c.o: ../order.h

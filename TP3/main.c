@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "order.h"
+#include "orderSolver.h"
 
 int main(int argc, char* argv[])
 {
@@ -10,7 +11,12 @@ int main(int argc, char* argv[])
 	}
 
 	FILE* file = fopen(argv[1],"r");
-	int initWidth;
+    if(!file)
+    {
+        printf("Read ERROR\n");
+        exit(2);
+    }
+    int initWidth;
 	fscanf(file,"%d",&initWidth);
 
 	int typeNumber = 0;
@@ -23,6 +29,9 @@ int main(int argc, char* argv[])
     order *Instance = malloc(sizeof*Instance);
     initOrder(Instance, initWidth, typeNumber, array);
     printOrder(Instance);
+
+    solveOrder(*Instance);
+
     freeOrder(Instance);
 
     fclose(file);
